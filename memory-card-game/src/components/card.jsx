@@ -1,51 +1,63 @@
 import { useState, useEffect } from "react";
 
 export default function Card() {
-  const [pokemon, setPokemon] = useState([]);
-  const [pokemonData, setPokemonData] = useState([]);
+  const [count, setcount] = useState(1);
+  const [flag, setFlag] = useState([]);
 
   useEffect(() => {
-    const fetchPokemon = async () => {
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/`);
+    const imgId = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    // const generateRandom = (count) => {
+    //   if (count < count * 1) {
+    //     const random = Math.floor(Math.random() * 250);
+    //     if (!imgId.includes(random)) {
+    //       imgId.push(random);
+    //       console.log(imgId)
+    //       count++;
+    //       generateRandom(count);
+    //     } else {
+    //       generateRandom(count);
+    //     }
+    //   }
+    // };
+
+    const fetchData = async () => {
+      let newObj = [];
+
+      const response = await fetch(`https://restcountries.com/v3.1/all`);
       const data = await response.json();
-      console.log(data.results);
+      console.log(data);
 
-      setPokemon(data);
-
-      const pokemonDatas = data.results.forEach((result) => {
-        console.log(result);
-        fetchPokemonData(result);
+      imgId.map((item) => {
+        console.log(item);
+        newObj = [
+          ...newObj,
+          {
+            id: item,
+            name: data[item]["name"]["common"],
+            flag: data[item]["flags"]["png"],
+          },
+        ];
       });
 
-      console.log(pokemonDatas);
+      setFlag([...newObj]);
 
-      return data;
+      console.log(newObj);
     };
 
-    const fetchPokemonData = async (pokemons) => {
-      const url = pokemons.url;
-      const response = await fetch(url);
-      const data = await response.json();
-
-      setPokemonData(data);
-
-      console.log(data);
-    };
-
-    fetchPokemon();
-    fetchPokemonData();
+    fetchData();
   }, []);
 
   return (
     <div className="game-card">
-      {/* {pokemonData.map((poke, index) => {
-        // console.log(index)
+      {flag.map((item) => {
         return (
-          <div key={index}>
-            <h3>{poke.name}</h3>
+          <div key={item.id}>
+            <div>{item.name}</div>
+            <img src={item.flag}></img>
           </div>
         );
-      })} */}
+      })}
     </div>
   );
 }
