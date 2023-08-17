@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "../assets/styles/card.css";
 
 export default function Card() {
   const [round, setRound] = useState(1);
@@ -8,7 +9,7 @@ export default function Card() {
     const dataInfo = [];
 
     const generateRandom = (count) => {
-      if (count < round * 8 + 1) {
+      if (count < round * 6 + 1) {
         const random = Math.floor(Math.random() * 250);
         console.log(random);
         if (!dataInfo.includes(random)) {
@@ -51,12 +52,14 @@ export default function Card() {
   }, []);
 
   return (
-    <div className="game-card">
+    <div className="card-container">
       {flag.map((item) => {
         return (
-          <div key={item.id}>
-            <div>{item.name}</div>
-            <img src={item.flag}></img>
+          <div key={item.id} className="card">
+            <img src={item.flag} className="card-img"></img>
+            <div className="container-card-name">
+              <div className="card-name">{item.name}</div>
+            </div>
           </div>
         );
       })}

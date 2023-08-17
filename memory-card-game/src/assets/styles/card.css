@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+}
+
+.card-container {
+  margin: 16px 32px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  border: 2px solid #1f4739;
+  border-radius: 8px;
+}
+
+.card-img {
+  background-color: #1f4739;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  min-height: 213px;
+  border-radius: 4px 4px 0 0;
+}
+
+.container-card-name {
+  background-color: #1f4739;
+  color: white;
+  padding: 8px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 0 0 4px 4px;
+}

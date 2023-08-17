@@ -27,7 +27,7 @@ export default function Main() {
 
   return (
     <>
-      <main>
+      {/* <main>
         <div className="display-text">current score: {currentScore}</div>
         <div className="display-text">highest score: {currentScore}</div>
       </main>
@@ -35,7 +35,7 @@ export default function Main() {
         Click Me
       </button>
       <p>click amout: {count}</p>
-      <p>uptime in secs: {counter}</p>
+      <p>uptime in secs: {counter}</p> */}
     </>
   );
 }
