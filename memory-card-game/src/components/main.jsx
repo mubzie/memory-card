@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import "../styles/main.css";
+import "../assets/styles/main.css";
 
 export default function Main() {
   const [currentScore, setCurrentScore] = useState(0);

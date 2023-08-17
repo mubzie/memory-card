@@ -1,37 +1,38 @@
 import { useState, useEffect } from "react";
 
 export default function Card() {
-  const [count, setcount] = useState(1);
+  const [round, setRound] = useState(1);
   const [flag, setFlag] = useState([]);
 
   useEffect(() => {
-    const imgId = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const dataInfo = [];
 
-    // const generateRandom = (count) => {
-    //   if (count < count * 1) {
-    //     const random = Math.floor(Math.random() * 250);
-    //     if (!imgId.includes(random)) {
-    //       imgId.push(random);
-    //       console.log(imgId)
-    //       count++;
-    //       generateRandom(count);
-    //     } else {
-    //       generateRandom(count);
-    //     }
-    //   }
-    // };
+    const generateRandom = (count) => {
+      if (count < round * 8 + 1) {
+        const random = Math.floor(Math.random() * 250);
+        console.log(random);
+        if (!dataInfo.includes(random)) {
+          dataInfo.push(random);
+          count++;
+          generateRandom(count);
+        } else {
+          generateRandom(count);
+        }
+      }
+    };
 
     const fetchData = async () => {
-      let newObj = [];
+      let countryObj = [];
 
       const response = await fetch(`https://restcountries.com/v3.1/all`);
       const data = await response.json();
       console.log(data);
 
-      imgId.map((item) => {
-        console.log(item);
-        newObj = [
-          ...newObj,
+      generateRandom(1);
+
+      dataInfo.map((item) => {
+        countryObj = [
+          ...countryObj,
           {
             id: item,
             name: data[item]["name"]["common"],
@@ -40,9 +41,10 @@ export default function Card() {
         ];
       });
 
-      setFlag([...newObj]);
+      setFlag([...countryObj]);
 
-      console.log(newObj);
+      console.log(dataInfo);
+      console.log(countryObj);
     };
 
     fetchData();

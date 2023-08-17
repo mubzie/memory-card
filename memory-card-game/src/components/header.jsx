@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import "../styles/header.css";
+import "../assets/styles/header.css";
 
 export default function Header() {
   return (
