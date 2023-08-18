@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import "../assets/styles/header.css";
 
-export default function Header() {
+export default function Header({ title }) {
   return (
     <>
-      <header className="header"> Memory Card Game </header>
+      <header className="header"> {title}</header>
     </>
   );
 }
