@@ -5,40 +5,40 @@ import Main from "./components/main";
 import Card from "./components/card";
 
 function App() {
-  const [round, setRound] = useState(1);
+  const [levelOne, setLevelOne] = useState(10);
+  const [levelTwo, setLevelTwo] = useState(20);
+  const [levelThree, setLevelThree] = useState(30);
   const [flag, setFlag] = useState([]);
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
 
   useEffect(() => {
-    const countryArray = [];
+    const countryCount = [];
 
-    const generateRandom = (count) => {
-      if (count < round * 8 + 1) {
+    const generateRandomNumber = (difficulty) => {
+      for (let i = 0; i < difficulty; i++) {
         const randomCountries = Math.floor(Math.random() * 250);
-        console.log(randomCountries);
-        if (!countryArray.includes(randomCountries)) {
-          countryArray.push(randomCountries);
-          count++;
-          generateRandom(count);
+        if (!countryCount.includes(randomCountries)) {
+          console.log(randomCountries);
+          countryCount.push(randomCountries);
         } else {
-          generateRandom(count);
+          countryCount.push(randomCountries + 1);
         }
       }
     };
 
     const fetchData = async () => {
-      let countryObj = [];
+      let countryArray = [];
 
       const response = await fetch(`https://restcountries.com/v3.1/all`);
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
 
-      generateRandom(1);
+      generateRandomNumber(levelOne);
 
-      countryArray.map((item) => {
-        countryObj = [
-          ...countryObj,
+      countryCount.map((item) => {
+        countryArray = [
+          ...countryArray,
           {
             id: item,
             name: data[item]["name"]["common"],
@@ -47,10 +47,9 @@ function App() {
         ];
       });
 
-      setFlag([...countryObj]);
+      setFlag([...countryArray]);
 
       console.log(countryArray);
-      console.log(countryObj);
     };
 
     fetchData();
@@ -64,8 +63,8 @@ function App() {
         flag={flag}
         score={score}
         setScore={setScore}
-        setRound={setRound}
-        round={round}
+        // setRound={setRound}
+        // round={round}
       />
     </>
   );

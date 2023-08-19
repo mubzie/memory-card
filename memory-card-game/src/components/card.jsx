@@ -11,18 +11,20 @@ export default function Card({
   round,
   setRound,
 }) {
-  const [selected, setSelected] = useState([]);
+  const [selectedCard, setSelectedCard] = useState([]);
+  
+  const handleClick = (index) => {
+    const findId = (element) => {
+      return element.id === index.id;
+    };
 
-  const handleClick = (item) => {
-    if (
-      !selected.some((element) => {
-        return element.id === item.id;
-      })
-    ) {
-      setSelected([...selected], item);
+    if (!selectedCard.find(findId)) {
+      setSelectedCard([...selectedCard], index);
       setScore(score + 1);
     }
-    if (score.length === item.length) {
+
+    if (score === flag.length) {
+      console.log(flag.length);
       setRound(round + 1);
     }
   };
@@ -38,9 +40,7 @@ export default function Card({
           >
             <img src={item.flag} className="card-img"></img>
             <div className="container-card-name">
-              <div className="card-name">
-                {item.name} {selected}
-              </div>
+              <div className="card-name">{item.name}</div>
             </div>
           </div>
         );
