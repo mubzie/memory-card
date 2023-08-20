@@ -1,0 +1,14 @@
+.score-preview {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+
+  margin-top: 24px;
+}
+
+.display-text {
+  background-color: #1f4739;
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 16px;
+}

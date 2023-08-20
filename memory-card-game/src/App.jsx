@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./components/header";
-import Main from "./components/main";
+import Main from "./components/preview";
 import Card from "./components/card";
 
 function App() {
@@ -58,13 +58,13 @@ function App() {
   return (
     <>
       <Header title="Memory Card Game" />
-      <Main></Main>
+      <Main currentScore={score} highestScore={bestScore} />
       <Card
         flag={flag}
         score={score}
         setScore={setScore}
-        // setRound={setRound}
-        // round={round}
+        bestScore={bestScore}
+        setBestScore={setBestScore}
       />
     </>
   );
