@@ -8,12 +8,12 @@ export default function Card({
   setScore,
   bestScore,
   setBestScore,
-  round,
-  setRound,
+  levelTwo,
+  setLevelTwo,
 }) {
   const [selectedCard, setSelectedCard] = useState([]);
 
-  const handleClick = (item) => {
+  const handleCardClick = (item) => {
     console.log(item.id);
 
     if (selectedCard) {
@@ -25,20 +25,23 @@ export default function Card({
 
     shuffleCard(flag);
 
+    // Local storage
+    localStorage.setItem("score", bestScore);
+
     if (selectedCard.find((element) => element.id === item.id)) {
-      console.log("i dey here before");
-      // setSelectedCard([]);
-      // setSelectedCard([...selectedCard, item]);
+      console.log("already selected");
+
+      const highestScore = JSON.parse(localStorage.getItem("score"));
+      setBestScore(highestScore);
+
       setScore(1);
     }
   };
 
   const shuffleCard = (flag) => {
-    console.log(flag);
     for (let i = flag.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1));
       [flag[i], flag[j]] = [flag[j], flag[i]];
-      console.log(flag);
     }
   };
 
@@ -46,7 +49,7 @@ export default function Card({
     <div className="card-container">
       {flag.map((item) => {
         return (
-          <div key={item.id} className="card" onClick={() => handleClick(item)}>
+          <div key={item.id} className="card" onClick={() => handleCardClick(item)}>
             <img className="card-img" src={item.flag}></img>
             <div className="container-card-name">
               <div className="card-name">{item.name}</div>
