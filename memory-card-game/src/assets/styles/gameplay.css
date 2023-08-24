@@ -8,6 +8,7 @@
 
 h1 {
   text-align: center;
+  color: #1f4739;
 }
 
 .selection {
@@ -18,7 +19,7 @@ h1 {
 }
 
 .selection-text {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -29,11 +30,14 @@ h1 {
 }
 
 button {
+  font-family: "Nunito", sans-serif;
   padding: 12px 32px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  border: 1px solid;
+  border: 1px solid #1f4739;
   border-radius: 24px;
   cursor: pointer;
+  background-color: #1f4739;
+  color: #fff;
 }
