@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+// import { useState } from "react";
 import "../assets/styles/card.css";
 
 export default function Card({
@@ -8,10 +8,11 @@ export default function Card({
   setScore,
   bestScore,
   setBestScore,
-  levelTwo,
-  setLevelTwo,
+  setGameOver,
+  selectedCard,
+  setSelectedCard,
 }) {
-  const [selectedCard, setSelectedCard] = useState([]);
+  // const [selectedCard, setSelectedCard] = useState([]);
 
   const handleCardClick = (item) => {
     console.log(item.id);
@@ -28,8 +29,13 @@ export default function Card({
     // Local storage
     localStorage.setItem("score", bestScore);
 
-    if (selectedCard.find((element) => element.id === item.id)) {
+    const cardAlreadySelected = selectedCard.find(
+      (element) => element.id === item.id
+    );
+
+    if (cardAlreadySelected) {
       console.log("already selected");
+      setGameOver(true);
 
       const highestScore = JSON.parse(localStorage.getItem("score"));
       setBestScore(highestScore);
@@ -49,7 +55,11 @@ export default function Card({
     <div className="card-container">
       {flag.map((item) => {
         return (
-          <div key={item.id} className="card" onClick={() => handleCardClick(item)}>
+          <div
+            key={item.id}
+            className="card"
+            onClick={() => handleCardClick(item)}
+          >
             <img className="card-img" src={item.flag}></img>
             <div className="container-card-name">
               <div className="card-name">{item.name}</div>

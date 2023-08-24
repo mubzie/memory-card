@@ -4,15 +4,18 @@ import Header from "./components/header";
 import Preview from "./components/preview";
 import Card from "./components/card";
 import Gamescreen from "./components/gameplay";
+import Restart from "./components/restartgame";
 
 function App() {
   const [title] = useState("Memory Card Game");
   const [level, setLevel] = useState(null);
-  const [gameOn, setGameOn] = useState(false);
   const [show, setShow] = useState(true);
-  const [flag, setFlag] = useState([]);
+  const [gameOn, setGameOn] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
+  const [flag, setFlag] = useState([]);
+  const [selectedCard, setSelectedCard] = useState([]);
 
   const easyLevel = () => {
     setLevel(5);
@@ -30,6 +33,39 @@ function App() {
     setLevel(15);
     setGameOn(true);
     setShow(false);
+  };
+
+  const handleRestart = () => {
+    if (level === 5) {
+      easyLevel();
+    } else if (level === 10) {
+      mediumLevel();
+    } else {
+      hardLevel();
+    }
+
+    setGameOver(false);
+    setScore(0);
+    setBestScore(0);
+    setSelectedCard([]);
+  };
+
+  const handleStart = () => {
+    setLevel(null);
+    setScore(0);
+    setBestScore(0);
+    setGameOver(false);
+    setShow(true);
+    setGameOn(false);
+    setSelectedCard([]);
+    shuffleCard();
+  };
+
+  const shuffleCard = (flag) => {
+    for (let i = flag.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [flag[i], flag[j]] = [flag[j], flag[i]];
+    }
   };
 
   useEffect(() => {
@@ -95,8 +131,14 @@ function App() {
           setScore={setScore}
           bestScore={bestScore}
           setBestScore={setBestScore}
+          gameOver={gameOver}
+          setGameOver={setGameOver}
+          selectedCard={selectedCard}
+          setSelectedCard={setSelectedCard}
         />
       )}
+
+      {gameOver && <Restart onRestart={handleRestart} onStart={handleStart} />}
     </>
   );
 }
