@@ -19,3 +19,17 @@
   color: #fff;
   border: 1px solid #fff;
 }
+
+/* media queries starts here */
+
+@media (max-width: 600px) {
+  .score-preview {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .display-text {
+    width: 224px;
+    text-align: center;
+  }
+}

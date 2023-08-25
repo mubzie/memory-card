@@ -6,7 +6,9 @@ export default function Gamescreen({ title, easy, medium, hard, show }) {
     <>
       {show && (
         <div className="intro-screen">
-          <h1>{title}</h1>
+          <h1>
+            Welcome to {title}. This game test your ability to remain things.
+          </h1>
           <div className="selection">
             <div className="selection-text">select difficulty</div>
             <div className="selection-btns">

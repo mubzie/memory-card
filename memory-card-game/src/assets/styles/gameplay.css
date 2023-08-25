@@ -8,15 +8,18 @@
 
 h1 {
   text-align: center;
-  /* color: #fff; */
   background-image: linear-gradient(
     to right,
     rgb(147, 232, 235),
-    rgb(141, 141, 141)
+    rgb(255 228 88)
   );
   -webkit-background-clip: text; /* For Safari */
   background-clip: text;
   color: transparent;
+
+  padding: 16px;
+  max-width: 600px;
+  text-align: center;
 }
 
 .selection {
@@ -40,7 +43,7 @@ h1 {
 
 button {
   font-family: "Nunito", sans-serif;
-  padding: 12px 32px;
+  padding: 12px 56px;
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
@@ -49,4 +52,17 @@ button {
   cursor: pointer;
   background-color: #202020;
   color: #fff;
+}
+
+/* media queries starts here */
+
+@media (max-width: 600px) {
+  .selection-btns {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  button {
+    width: 320px;
+  }
 }

@@ -13,13 +13,11 @@
 
 .card {
   width: 200px;
-  /* height: auto; */
   height: 244px;
   padding: 2px;
   display: flex;
   flex-direction: column;
 
-  /* border: 2px solid #fff; */
   border: 2px solid #afafaf;
   border-radius: 8px;
   cursor: pointer;
@@ -40,7 +38,6 @@ img {
   height: 100%;
   min-height: 180px;
   max-height: initial;
-  /* max-height: 100px; */
   border-radius: 4px 4px 0 0;
 }
 
@@ -53,4 +50,17 @@ img {
   font-weight: 700;
   text-transform: uppercase;
   border-radius: 0 0 4px 4px;
+}
+
+/* media queries starts here */
+
+@media (max-width: 600px) {
+  .card-container {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .card {
+    width: 172px;
+  }
 }
