@@ -20,7 +20,9 @@
   align-items: center;
   gap: 32px;
 
-  background-color: #fff;
+  /* background-color: #fff; */
+  background-image: linear-gradient(to right, rgb(39, 39, 39), rgb(3, 3, 3));
+  color: #fff;
 
   font-size: 20px;
   font-weight: 800;
@@ -35,4 +37,9 @@
 button.content-btn {
   font-size: 12px;
   border-radius: 12px;
+}
+
+.restart-game {
+  background-color: #fff;
+  color: #020202;
 }

@@ -7,7 +7,7 @@ export default function Restart({ onRestart, onStart }) {
       <div className="content">
         <div>You lost this one</div>
         <div className="content-btns">
-          <button className="content-btn" onClick={onRestart}>
+          <button className="content-btn restart-game" onClick={onRestart}>
             start new game
           </button>
           <button className="content-btn" onClick={onStart}>

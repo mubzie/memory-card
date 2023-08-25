@@ -6,7 +6,9 @@ export default function Preview({ currentScore, highestScore }) {
     <>
       <div className="score-preview">
         <div className="display-text">current score: {currentScore}</div>
-        <div className="display-text">highest score: {highestScore}</div>
+        <div className="display-text highscore">
+          highest score: {highestScore}
+        </div>
       </div>
     </>
   );

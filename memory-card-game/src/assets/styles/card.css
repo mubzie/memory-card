@@ -15,11 +15,12 @@
   width: 200px;
   /* height: auto; */
   height: 244px;
-  padding: 4px;
+  padding: 2px;
   display: flex;
   flex-direction: column;
 
-  border: 2px solid #1f4739;
+  /* border: 2px solid #fff; */
+  border: 2px solid #afafaf;
   border-radius: 8px;
   cursor: pointer;
 
@@ -31,7 +32,7 @@
 }
 
 .card-img {
-  background-color: #1f4739;
+  background-color: #202020;
 }
 
 img {
@@ -44,7 +45,7 @@ img {
 }
 
 .container-card-name {
-  background-color: #1f4739;
+  background-image: linear-gradient(to right, rgb(39, 39, 39), rgb(3, 3, 3));
   color: white;
   padding: 8px;
   text-align: center;

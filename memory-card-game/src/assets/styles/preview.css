@@ -3,13 +3,19 @@
   justify-content: center;
   gap: 24px;
 
-  margin-top: 24px;
-  margin-bottom: 24px;
+  margin-top: 16px;
+  margin-bottom: 32px;
 }
 
 .display-text {
-  background-color: #1f4739;
-  color: #fff;
+  background-color: #fff;
+  color: #020202;
   padding: 12px 40px;
   border-radius: 16px;
+}
+
+.display-text.highscore {
+  background-image: linear-gradient(to right, rgb(39, 39, 39), rgb(3, 3, 3));
+  color: #fff;
+  border: 1px solid #fff;
 }
