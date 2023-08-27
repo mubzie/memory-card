@@ -6,14 +6,12 @@ export default function Card({
   flag,
   score,
   setScore,
-  bestScore,
-  setBestScore,
+  highScore,
+  setHighScore,
   setGameOver,
   selectedCard,
   setSelectedCard,
 }) {
-  // const [selectedCard, setSelectedCard] = useState([]);
-
   const handleCardClick = (item) => {
     console.log(item.id);
 
@@ -21,13 +19,12 @@ export default function Card({
       console.log("selected");
       setSelectedCard([...selectedCard, item]);
       setScore(score + 1);
-      setBestScore(bestScore + 1);
     }
 
-    shuffleCard(flag);
+    shuffleCard();
 
     // Local storage
-    localStorage.setItem("score", bestScore);
+    localStorage.setItem("score", highScore);
 
     const cardAlreadySelected = selectedCard.find(
       (element) => element.id === item.id
@@ -38,13 +35,13 @@ export default function Card({
       setGameOver(true);
 
       const highestScore = JSON.parse(localStorage.getItem("score"));
-      setBestScore(highestScore);
+      setHighScore(highestScore);
 
       setScore(1);
     }
   };
 
-  const shuffleCard = (flag) => {
+  const shuffleCard = () => {
     for (let i = flag.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1));
       [flag[i], flag[j]] = [flag[j], flag[i]];

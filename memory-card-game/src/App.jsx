@@ -13,7 +13,7 @@ function App() {
   const [gameOn, setGameOn] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState(0);
-  const [bestScore, setBestScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
   const [flag, setFlag] = useState([]);
   const [selectedCard, setSelectedCard] = useState([]);
 
@@ -46,22 +46,20 @@ function App() {
 
     setGameOver(false);
     setScore(0);
-    setBestScore(0);
     setSelectedCard([]);
+    shuffleCard();
   };
 
   const handleStart = () => {
     setLevel(null);
     setScore(0);
-    setBestScore(0);
     setGameOver(false);
     setShow(true);
     setGameOn(false);
     setSelectedCard([]);
-    shuffleCard();
   };
 
-  const shuffleCard = (flag) => {
+  const shuffleCard = () => {
     for (let i = flag.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1));
       [flag[i], flag[j]] = [flag[j], flag[i]];
@@ -110,11 +108,15 @@ function App() {
     fetchData();
   }, [level]);
 
+  useEffect(() => {
+    if (score > highScore) {
+      setHighScore(score);
+    }
+  }, [score]);
+
   return (
     <>
       <Header title={title} />
-
-      {gameOn && <Preview currentScore={score} highestScore={bestScore} />}
 
       <Gamescreen
         title={title}
@@ -124,13 +126,15 @@ function App() {
         show={show}
       />
 
+      {gameOn && <Preview currentScore={score} highestScore={highScore} />}
+
       {gameOn && (
         <Card
           flag={flag}
           score={score}
           setScore={setScore}
-          bestScore={bestScore}
-          setBestScore={setBestScore}
+          highScore={highScore}
+          setHighScore={setHighScore}
           gameOver={gameOver}
           setGameOver={setGameOver}
           selectedCard={selectedCard}
@@ -138,7 +142,16 @@ function App() {
         />
       )}
 
-      {gameOver && <Restart onRestart={handleRestart} onStart={handleStart} />}
+      {gameOver && (
+        <Restart
+          score={score}
+          level={level}
+          onRestart={handleRestart}
+          onStart={handleStart}
+        />
+      )}
+
+      {/* <Restart score={score} level={level} /> */}
     </>
   );
 }
