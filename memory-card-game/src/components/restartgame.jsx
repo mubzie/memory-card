@@ -21,7 +21,7 @@ export default function Restart({ onRestart, onStart, score, level }) {
           <div>You lost this one</div>
           <div className="content-btns">
             <button className="content-btn restart-game" onClick={onRestart}>
-              start new game
+              restart game
             </button>
             <button className="content-btn" onClick={onStart}>
               go back to main menu

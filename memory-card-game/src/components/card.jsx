@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-// import { useState } from "react";
 import "../assets/styles/card.css";
 
 export default function Card({
@@ -11,20 +10,16 @@ export default function Card({
   setGameOver,
   selectedCard,
   setSelectedCard,
-  level
+  level,
 }) {
   const handleCardClick = (item) => {
-    console.log(item.id);
-
     if (selectedCard) {
-      console.log("selected");
       setSelectedCard([...selectedCard, item]);
       setScore(score + 1);
     }
 
     shuffleCard();
 
-    // Local storage
     localStorage.setItem("score", highScore);
 
     const cardAlreadySelected = selectedCard.find(
@@ -32,17 +27,18 @@ export default function Card({
     );
 
     if (cardAlreadySelected) {
-      console.log("already selected");
       setGameOver(true);
 
       const highestScore = JSON.parse(localStorage.getItem("score"));
       setHighScore(highestScore);
 
       setScore(1);
-    } 
+    }
 
-    if (score === level) {
-      setGameOver(true)
+    const updatedScore = score + 1;
+
+    if (updatedScore === level) {
+      setGameOver(true);
     }
   };
 

@@ -73,7 +73,6 @@ function App() {
       for (let i = 0; i < difficulty; i++) {
         const randomCountries = Math.floor(Math.random() * 250);
         if (!countryCount.includes(randomCountries)) {
-          console.log(randomCountries);
           countryCount.push(randomCountries);
         } else {
           countryCount.push(randomCountries + 1);
@@ -101,8 +100,6 @@ function App() {
       });
 
       setFlag([...countryArray]);
-
-      console.log(countryArray);
     };
 
     fetchData();
@@ -152,8 +149,6 @@ function App() {
           onStart={handleStart}
         />
       )}
-
-      {/* <Restart score={score} level={level} /> */}
     </>
   );
 }
