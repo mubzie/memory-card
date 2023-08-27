@@ -132,6 +132,7 @@ function App() {
         <Card
           flag={flag}
           score={score}
+          level={level}
           setScore={setScore}
           highScore={highScore}
           setHighScore={setHighScore}
@@ -146,6 +147,7 @@ function App() {
         <Restart
           score={score}
           level={level}
+          setGameOver={setGameOver}
           onRestart={handleRestart}
           onStart={handleStart}
         />

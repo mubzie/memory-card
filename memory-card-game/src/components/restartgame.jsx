@@ -2,10 +2,6 @@
 import "../assets/styles/restartgame.css";
 
 export default function Restart({ onRestart, onStart, score, level }) {
-  const newScore = score;
-  if (newScore === level) {
-    console.log("let see");
-  }
   return (
     <div className="overlay">
       {score === level ? (

@@ -11,6 +11,7 @@ export default function Card({
   setGameOver,
   selectedCard,
   setSelectedCard,
+  level
 }) {
   const handleCardClick = (item) => {
     console.log(item.id);
@@ -38,6 +39,10 @@ export default function Card({
       setHighScore(highestScore);
 
       setScore(1);
+    } 
+
+    if (score === level) {
+      setGameOver(true)
     }
   };
 
