@@ -57,6 +57,17 @@ button {
 /* media queries starts here */
 
 @media (max-width: 600px) {
+  .intro-screen {
+    margin-top: 16px;
+    gap: 40px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+
   .selection-btns {
     flex-direction: column;
     gap: 8px;
