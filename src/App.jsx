@@ -7,7 +7,7 @@ import Gamescreen from "./components/gameplay";
 import Restart from "./components/restartgame";
 
 function App() {
-  const [title] = useState("Memory Card Game");
+  const [title] = useState("The Memory Card Game");
   const [level, setLevel] = useState(null);
   const [show, setShow] = useState(true);
   const [gameOn, setGameOn] = useState(false);
